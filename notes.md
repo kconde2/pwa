@@ -10,3 +10,14 @@ Service worker life cycle
 - register
 - install
 - activate
+
+https://developers.google.com/web/fundamentals/codelabs/offline/
+Only available on https or localhost
+
+Toujours 2 services workers
+
+SW strategies
+ - Offline first
+ - Bypass network
+https://serviceworke.rs/caching-strategies.html
+https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/
