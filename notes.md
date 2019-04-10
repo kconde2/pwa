@@ -21,3 +21,12 @@ SW strategies
  - Bypass network
 https://serviceworke.rs/caching-strategies.html
 https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/
+
+https://developers.google.com/web/tools/workbox/
+https://developers.google.com/web/tools/workbox/modules/workbox-cli
+
+yarn global add workbox-cli
+worbox --version
+workbox wizard
+npmx
+yarn gen

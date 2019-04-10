@@ -1,0 +1,14 @@
+{
+  "name": "pwa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kconde2/pwa.git",
+  "author": "Kaba CONDE <kabaconde15@gmail.com>",
+  "scripts": {
+    "gen": "npx workbox generateSW"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "workbox-cli": "^4.2.0"
+  }
+}
