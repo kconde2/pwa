@@ -30,3 +30,4 @@ worbox --version
 workbox wizard
 npmx
 yarn gen
+runtime caching : https://developers.google.com/web/tools/workbox/guides/common-recipes

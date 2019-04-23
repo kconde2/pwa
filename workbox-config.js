@@ -1,14 +1,25 @@
 module.exports = {
   "globDirectory": "./",
-  "globPatterns": [
-    "**/*.{json,jpg,html,js,css,md,lock}"
-  ],
   "importWorkboxFrom": "local",
+  "skipWaiting": true,
   "globIgnores": [
+    "images/**/*",
     "node_modules/**/*",
-    "workbox-config.js",
-    "notes.md",
-    'yarn.lock'
+    "package*",
+    "workbox-4.2.0",
+    "workbox-config.js"
+  ],
+  "runtimeCaching": [
+    {
+      "urlPattern": /\.(?:png|gif|jpg|jpeg|svg)$/,
+      "handler": "CacheFirst",
+      "options": {
+        "cacheName": "images",
+      }
+    }
+  ],
+  "globPatterns": [
+    "**/*.{json,jpg,html,js,css}"
   ],
   "swDest": "service-worker.js"
 };
