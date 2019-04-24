@@ -127,10 +127,7 @@
       }
     }
   </style>
-  <link rel="preload"
-    href="./js/components/card/card.css"
-    as="style">
-  <!-- <link rel="stylesheet" href="/js/components/card/card.css"> -->
+
 </head>
 
 <body>
@@ -157,7 +154,7 @@
   </section>
   <script type="module"
     src="./js/app.js"></script>
-  <script async>
+  <script async nomodule="">
     // Load CardElement CSS
     const cardStyle = document.createElement('link');
     cardStyle.href = 'js/components/card/card.css';

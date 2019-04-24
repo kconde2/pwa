@@ -1,4 +1,4 @@
-import { default as Card, initCard } from '/js/components/card/card.js';
+import AppCard from '/js/components/card/card.js';
 import { openDB } from '/node_modules/idb/build/esm/index.js';
 import checkConnectivity  from '/js/connection.js';
 
@@ -35,16 +35,9 @@ import checkConnectivity  from '/js/connection.js';
 
     try {
       const cards = articles.map(item => {
-        const constructor = document.createElement('div');
-        constructor.innerHTML = Card;
+        const cardElement = new AppCard();
 
-        const cardElement = constructor.querySelector('.card');
-
-        initCard(item.image,
-          item.placeholder,
-          item.content.title,
-          item.content.description,
-          cardElement);
+        cardElement.initCard(item.image, item.placeholder, item.content.title, item.content.description, cardElement);
         listPage.appendChild(cardElement);
 
         return cardElement;
