@@ -11,12 +11,18 @@ export default class AppCard extends LitElement {
     this.src = "";
   }
 
+  firstUpdated() {
+    this.shadowRoot.querySelector('img').addEventListener('onload', e => {
+      this.dispatchEvent(new CustomEvent('image-loaded'));
+    });
+  }
+
   static get properties() {
     return {
-      title : { type: String },
-      description : { type: String },
-      placeholder : { type: String },
-      src : { type: String }
+      title: { type: String },
+      description: { type: String },
+      placeholder: { type: String },
+      src: { type: String }
     }
   }
 
@@ -118,10 +124,15 @@ export default class AppCard extends LitElement {
   }
 
   initCard(src, placeholder, title, description) {
-    this.src;
+    this.src = src;
     this.title = title;
     this.description = description;
     this.placeholder = placeholder;
+  }
+
+  swapImage() {
+    this.shadowRoot.querySelector('img').src = this.src;
+    this.shadowRoot.querySelector('.placeholder').classList.add('fade');
   }
 
   render() {

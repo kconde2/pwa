@@ -40,44 +40,29 @@ import checkConnectivity  from '/js/connection.js';
         cardElement.initCard(item.image, item.placeholder, item.content.title, item.content.description, cardElement);
         listPage.appendChild(cardElement);
 
+        if (!'IntersectionObserver' in window) {
+          cardElement.swapImage();
+        }
+
         return cardElement;
-        // setTimeout(() => {
-        //   const img = cardElement.querySelector('img');
-        //   img.src = img.dataset.src;
-        //   img.onload = () => {
-        //     // Add the `fade` class to the placeholder
-        //     img.parentNode.querySelector('.placeholder').classList.add('fade');
-        //   }
-        // }, 3000);
       });
 
-      /**
-       * @see https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-       */
-      const options = {
-        rootMarging: '0px 0px 0px 0px'
-      };
-      const callback = entries => {
-        entries.forEach((entry) => {
-          // If image element in view
+      const callback = function(entries) {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Actualy load image
-            const image = entry.target
-            image.src = image.dataset.src;
-            image.onload = () => {
-              // Add the `fade` class to the placeholder
-              image.parentNode.querySelector('.placeholder').classList.add('fade');
-            }
+            const card = entry.target;
+
+            card.addEventListener('image-loaded', card.swapImage());
           }
         });
-      };
+      }
 
-      const io = new IntersectionObserver(callback, options);
-      // Observe images as they enter the viewport
-      cards.forEach((card) => {
-        const image = card.querySelector('img');
-        io.observe(image);
+      const io = new IntersectionObserver(callback);
+
+      cards.forEach(card => {
+        io.observe(card);
       });
+
     } catch (error) {
       console.log(error.toString());
     }
